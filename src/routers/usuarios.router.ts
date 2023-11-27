@@ -142,5 +142,181 @@ const generateTokenResponse = (user: User) => {
     };
 };
 
+/**
+ * @swagger
+ * tags:
+ *   name: Usuarios
+ *   description: Endpoints para la gestión de usuarios en la aplicación
+ *   x-order: 1  # Orden 1
+ */
+
+/**
+ * @swagger
+ * /usuarios/load:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Cargar datos de usuarios
+ *     description: Verifica si los datos de usuarios están cargados y, si no, los carga con ejemplos de usuarios.
+ *     responses:
+ *       200:
+ *         description: Datos de usuarios cargados correctamente
+ *       500:
+ *         description: Error al cargar los datos de usuarios
+ */
+
+/**
+ * @swagger
+ * /usuarios/login:
+ *   post:
+ *     tags: [Usuarios]
+ *     summary: Iniciar sesión
+ *     requestBody:
+ *       description: Credenciales de inicio de sesión
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - email
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Inicio de sesión exitoso, devuelve el token de acceso
+ *       400:
+ *         description: Credenciales incorrectas, vuelva a intentarlo
+ */
+
+/**
+ * @swagger
+ * /usuarios/register:
+ *   post:
+ *     tags: [Usuarios]
+ *     summary: Registrar un nuevo usuario
+ *     requestBody:
+ *       description: Datos del nuevo usuario
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserRegistration'
+ *     responses:
+ *       200:
+ *         description: Usuario registrado exitosamente
+ *       400:
+ *         description: Error al registrar el usuario
+ */
+
+/**
+ * @swagger
+ * /usuarios/users:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Obtener todos los usuarios
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *       500:
+ *         description: Error al obtener la lista de usuarios
+ */
+
+/**
+ * @swagger
+ * /usuarios/users/{id}:
+ *   get:
+ *     tags: [Usuarios]
+ *     summary: Obtener información sobre un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Datos del usuario
+ *       400:
+ *         description: Usuario no encontrado
+ *
+ *   put:
+ *     tags: [Usuarios]
+ *     summary: Actualizar información de un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       description: Datos actualizados del usuario
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserUpdate'
+ *     responses:
+ *       200:
+ *         description: Usuario actualizado exitosamente
+ *       400:
+ *         description: Error al actualizar el usuario
+ *       401:
+ *         description: Acceso no autorizado
+ *
+ *   delete:
+ *     tags: [Usuarios]
+ *     summary: Eliminar un usuario por ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID del usuario
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Usuario eliminado exitosamente
+ *       400:
+ *         description: Error al eliminar el usuario
+ *       401:
+ *         description: Acceso no autorizado
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     UserRegistration:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         password:
+ *           type: string
+ *       required:
+ *         - name
+ *         - email
+ *         - password
+ *
+ *     UserUpdate:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *       required:
+ *         - name
+ *         - email
+ */
+
 
 export default router
