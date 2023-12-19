@@ -9,7 +9,7 @@ const swaggerSpec = {
         },
         servers: [
             {
-                url: "http://localhost:3200,http://161.97.140.245:8082"
+                url: "http://161.97.140.245:8082"
 
             }
         ]
